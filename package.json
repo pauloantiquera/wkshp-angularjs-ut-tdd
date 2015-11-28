@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "description": "Angular and TDD Workshop project",
   "scripts": {
+    "postinstall": "node_modules/bower/bin/bower install",
+    "prestart": "node_modules/bower/bin/bower install",
     "start": "http-server -a 0.0.0.0 -p 8000 -c1",
-    "test": "node node_modules/karma/bin/karma start test/karma.conf.js"
+    "pretest": "node_modules/bower/bin/bower install",
+    "test": "node node_modules/karma/bin/karma start karma.conf.js"
   },
   "repository": {
     "type": "git",

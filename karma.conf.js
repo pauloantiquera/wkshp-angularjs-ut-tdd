@@ -16,8 +16,8 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'app/*.js',
-      'app/libs/angular/angular.js',
-      'app/libs/angular-mocks/angular-mocks.js',
+      'bower_components/angular/angular.js',
+      'bower_components/angular-mocks/angular-mocks.js',
       'test/**/*.spec.js'
     ],
 
@@ -36,7 +36,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        'app/*.js': ['coverage']
+        'app/**/*.js': ['coverage']
     },
 
     // test results reporter to use
