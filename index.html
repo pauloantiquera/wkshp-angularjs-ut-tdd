@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="LunchBoxApp">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +15,7 @@
     <link href="assets/css/lunchbox-app.css" rel="stylesheet">
   </head>
 
-  <body>
+  <body ng-controller="dayProductionController as dayProductionCtrl">
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -38,13 +38,18 @@
     </nav>
 
     <div class="container">
-      <div>
-        <h1>AngularJS+TDD Workshop - Project App</h1>
-        <p class="lead">During this workshop we'll create an app to manage a daily lunch boxes (packed lunch) production.</p>
-      </div>
+        <h1>{{dayProductionCtrl.getPageTitle()}} [{{dayProductionCtrl.getDay()}}]</h1>
     </div>
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+
+    <!-- Lunch Box App Scripts -->
+    <script src="app/lunchBoxApp.module.js"></script>
+    <script src="app/dailyproduction/dailyProduction.module.js"></script>
+    <script src="app/dailyproduction/dayProduction.controller.js"></script>
+
+
   </body>
 </html>

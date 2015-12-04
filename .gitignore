@@ -1,0 +1,5 @@
+bower_components/
+node_modules/
+workshop-angular-tdd.sublime-project
+workshop-angular-tdd.sublime-workspace
+test/coverage/
