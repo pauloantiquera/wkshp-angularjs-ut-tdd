@@ -4,12 +4,13 @@
     angular
         .module('lunchBoxApp.assembly', [
             'Login',
+            'DailyProduction',            
             'ngRoute'
         ])
-        .config(['$routeProvider', function($routeProvider) {
+        .config(['$routeProvider', 'loginDefaultRoute', function($routeProvider, loginDefaultRoute) {            
 	    	$routeProvider
 	    		.otherwise({
-	    			redirectTo: '/login'
+	    			redirectTo: loginDefaultRoute
 	    		});
         }]);
 })();

@@ -2,5 +2,6 @@
     'use strict';
 
     angular
-        .module('Login', ['Auth','ngRoute']);
+        .module('Login', ['Auth','ngRoute'])
+        .constant('loginDefaultRoute', '/login');
 })();

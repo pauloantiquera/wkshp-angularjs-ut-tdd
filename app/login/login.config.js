@@ -9,5 +9,6 @@
         			templateUrl: 'app/login/loginForm.html',
         			controller: 'loginController'
         		});
-        }]);;
+        }])
+        .constant('loginDefaultRoute', '/login');
 })();
