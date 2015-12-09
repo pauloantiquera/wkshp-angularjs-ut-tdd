@@ -15,7 +15,7 @@
     <link href="assets/css/lunchbox-app.css" rel="stylesheet">
   </head>
 
-  <body ng-controller="dayProductionController as dayProductionCtrl">
+  <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -37,19 +37,25 @@
       </div>
     </nav>
 
-    <div class="container">
-        <h1>{{dayProductionCtrl.getPageTitle()}} [{{dayProductionCtrl.getDay()}}]</h1>
-    </div>
+    <div ng-view></div>
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
 
     <!-- Lunch Box App Scripts -->
     <script src="app/lunchBoxApp.module.js"></script>
-    <script src="app/dailyproduction/dailyProduction.module.js"></script>
-    <script src="app/dailyproduction/dayProduction.controller.js"></script>
+    <script src="app/lunchBoxApp.routes.js"></script>
+    <script src="app/lunchBoxApp.assembly.js"></script>
 
+    <!-- Login Module -->
+    <script src="app/login/login.module.js"></script>
+    <script src="app/login/login.config.js"></script>
+    <script src="app/login/login.controller.js"></script>
 
+    <!-- Auth Module -->
+    <script src="app/auth/auth.module.js"></script>
+    <script src="app/auth/staticAuth.service.js"></script>
   </body>
 </html>

@@ -11,10 +11,11 @@
     function dayProductionController() {
         /* Private Attributes Declaration */
         var self = this;
-        var pageTitle = 'Days Production List';
+        var pageTitle = 'Daily Production List';
+        var productionsList = [];
         /* ****************************** */
 
-        /* Public Attributes Declaration */
+        /* Public Attributes Declaration */        
         /* ***************************** */
 
         /* Private Methods Declaration */
@@ -25,11 +26,15 @@
         self.getPageTitle = function () {
            return pageTitle; 
         };
+
+        self.getProductionsList = function() {
+            return productionsList;
+        };
         /* ************************** */
 
         /* Init */
         function initController() {
-        }
+        };
 
         initController();
         /* **** */

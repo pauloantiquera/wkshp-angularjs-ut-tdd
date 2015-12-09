@@ -2,5 +2,5 @@
     'use strict';
 
     angular
-        .module('LunchBoxApp', ['DailyProduction']);
+        .module('LunchBoxApp', ['lunchBoxApp.routes', 'lunchBoxApp.assembly']);
 })();

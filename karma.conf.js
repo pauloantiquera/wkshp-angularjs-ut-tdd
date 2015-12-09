@@ -22,9 +22,10 @@ module.exports = function(config) {
       'test/**/*.spec.js'
     ],
 
-
     // list of files to exclude
     exclude: [
+        'app/**/*.routes.js',
+        'app/**/*.config.js',
     ],
 
     // Plugins

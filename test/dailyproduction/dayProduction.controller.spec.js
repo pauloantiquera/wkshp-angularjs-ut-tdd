@@ -14,8 +14,16 @@ describe('dayProductionController unit test Spec', function() {
 	});
 
 	it('The controller must provide a public function that returns a page title as "Days Production List"', function() {
-		var expectedTitle = "Days Production List";
+		var expectedTitle = "Daily Production List";
 
 		expect($dayProductionController.getPageTitle()).toEqual(expectedTitle);
+	});
+
+	it('The controller must provide a public function that returns an array of production days', function() {
+		expect(angular.isArray($dayProductionController.getProductionsList())).toBe(true);
+	});
+
+	it('The controller must fill productions list with data get through http get requisition', function() {
+		
 	});
 });

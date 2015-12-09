@@ -3,6 +3,8 @@
 describe('Login Controller Unit Tests Spec', function() {
 
 	beforeEach(function() {
+		angular.module('Auth', []);
+		angular.module('ngRoute', []);
 		module('Login');
 	});
 
