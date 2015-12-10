@@ -1,7 +1,10 @@
 'use strict'
 
 describe('dayProductionController unit test Spec', function() {	
-	beforeEach(module('DailyProduction'));
+	beforeEach(function() {
+		angular.module('ngRoute', []);
+		module('DailyProduction');
+	});
 
 	var $dayProductionController;
 

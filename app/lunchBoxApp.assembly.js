@@ -7,10 +7,21 @@
             'DailyProduction',            
             'ngRoute'
         ])
-        .config(['$routeProvider', 'loginDefaultRoute', function($routeProvider, loginDefaultRoute) {            
-	    	$routeProvider
-	    		.otherwise({
-	    			redirectTo: loginDefaultRoute
-	    		});
-        }]);
+        .config(lunchBoxAppAssemblyRoutesConfig);
+
+    lunchBoxAppAssemblyRoutesConfig.$inject = [
+        '$routeProvider', 
+        'loginDefaultRoute', 
+        'dailyProductionDefaultRoute'
+    ];
+
+    function lunchBoxAppAssemblyRoutesConfig($routeProvider, loginDefaultRoute, dailyProductionDefaultRoute) {            
+        $routeProvider
+            .when('/postauthredirection', {
+                redirectTo: dailyProductionDefaultRoute
+            })
+            .otherwise({
+                redirectTo: loginDefaultRoute
+            });
+    }
 })();

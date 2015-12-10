@@ -7,7 +7,7 @@
         	$routeProvider
         		.when('/login', {
         			templateUrl: 'app/login/loginForm.html',
-        			controller: 'loginController'
+        			controller: 'loginController as loginCtrl'
         		});
         }])
         .constant('loginDefaultRoute', '/login');

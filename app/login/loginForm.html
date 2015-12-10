@@ -2,7 +2,7 @@
 	<div class="row">&nbsp;</div>
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h4><strong>Access to LunchBox App</strong></h4>
+			<h4><strong>{{loginCtrl.title}}</strong></h4>
 		</div>
 		<div class="panel-body">
 			<div class="container">
@@ -10,13 +10,13 @@
 					<form class="col-lg-offset-4 col-lg-4">
 						<div class="form-group">
 							<label for="user-name">User Name</label>
-							<input type="text" id="user-name" class="form-control">
+							<input type="text" id="user-name" class="form-control" ng-model="loginCtrl.userName">
 						</div>
 						<div class="form-group">
 							<label for="password">Password</label>
-							<input type="password" id="password" class="form-control">
+							<input type="password" id="password" class="form-control" ng-model="loginCtrl.password">
 						</div>
-						<button class="btn btn-primary col-lg-offset-8 col-lg-4">Sing-in</button>
+						<button class="btn btn-primary col-lg-offset-8 col-lg-4" ng-click="loginCtrl.doLogin()">Sing-in</button>
 					</form>
 				</div>
 			</div>

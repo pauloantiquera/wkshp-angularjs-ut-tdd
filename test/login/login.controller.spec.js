@@ -12,10 +12,14 @@ describe('Login Controller Unit Tests Spec', function() {
 	var $authServiceMock = {
 		doAuth : function() {}
 	};
+	var $locationMock = {
+		path: function() {}
+	};
 
 	beforeEach(function() {
 		module(function($provide) {
 			$provide.value('authService', $authServiceMock);
+			$provide.value('$location', $locationMock);
 		});
 
 		inject(function($controller) {
@@ -42,7 +46,7 @@ describe('Login Controller Unit Tests Spec', function() {
 			expect($loginController.doLogin).toThrowError('Invalid credentials');
 		});
 
-		it('with a valid credential set (userName, password) must return the authService.doLogin returned value', function() {
+		it('with a valid credential set (userName, password) and true return from authService.doAuth must redirect to /postauthredirection route', function() {
 			var validUserName = 'anyValidUserName',
 				validPassword = 'anyValidPassword',
 				expectedAuthServiceDoAuthValue = true;
@@ -51,11 +55,25 @@ describe('Login Controller Unit Tests Spec', function() {
 			$loginController.password = validPassword;
 
 			spyOn($authServiceMock, 'doAuth').and.returnValue(expectedAuthServiceDoAuthValue);
+			spyOn($locationMock, 'path');
 
-			var returnedValue = $loginController.doLogin();
+			$loginController.doLogin();
 
 			expect($authServiceMock.doAuth).toHaveBeenCalledWith(validUserName, validPassword);
-			expect(returnedValue).toEqual(expectedAuthServiceDoAuthValue);
+			expect($locationMock.path).toHaveBeenCalledWith('/postauthredirection');
+		});
+
+		it('must throw a "Auth error: wrong userName or password" if authService.doAuth returns false', function() {
+			var validUserName = 'anyValidUserName',
+				validPassword = 'anyValidPassword',
+				expectedAuthServiceDoAuthValue = false;
+
+			$loginController.userName = validUserName;
+			$loginController.password = validPassword;
+
+			spyOn($authServiceMock, 'doAuth').and.returnValue(expectedAuthServiceDoAuthValue);
+
+			expect($loginController.doLogin).toThrowError('Auth error: wrong userName or password');
 		});
 	});
 });

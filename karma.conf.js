@@ -26,6 +26,7 @@ module.exports = function(config) {
     exclude: [
         'app/**/*.routes.js',
         'app/**/*.config.js',
+        'app/**/*.assembly.js'
     ],
 
     // Plugins
