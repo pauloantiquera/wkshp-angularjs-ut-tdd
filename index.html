@@ -37,6 +37,7 @@
       </div>
     </nav>
 
+    <alert-messages id="alert"></alert-messages>
     <div ng-view></div>
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -48,6 +49,10 @@
     <script src="app/lunchBoxApp.module.js"></script>
     <script src="app/lunchBoxApp.routes.js"></script>
     <script src="app/lunchBoxApp.assembly.js"></script>
+    <script src="app/services/lunchBoxApp.services.module.js"></script>
+    <script src="app/services/messaging.service.js"></script>
+    <script src="app/components/lunchBoxApp.components.module.js"></script>
+    <script src="app/components/alertmessages/alertMessages.directive.js"></script>
 
     <!-- Login Module -->
     <script src="app/login/login.module.js"></script>
@@ -61,5 +66,6 @@
     <!-- Daily Production Module -->
     <script src="app/dailyproduction/dailyProduction.module.js"></script>
     <script src="app/dailyproduction/dailyProduction.config.js"></script>
+
   </body>
 </html>

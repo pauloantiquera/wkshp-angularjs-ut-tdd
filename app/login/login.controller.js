@@ -7,11 +7,12 @@
 
     loginController.$inject = [
         'authService',
-        '$location'
+        '$location',
+        'messagingService'
     ];
 
     /* @ngInject */
-    function loginController(authService, $location) {
+    function loginController(authService, $location, messagingService) {
         /* Private Attributes Declaration */
         var self = this;
         /* ****************************** */
@@ -38,12 +39,11 @@
                 if (authService.doAuth(self.userName, self.password)) {
                     doPostAuthRedirection();
                 } else {
-                    throw new Error('Auth error: wrong userName or password');
+                    messagingService.sendErrorMessage('Wrong userName or password.');
                 }
             } else {
-                throw new Error('Invalid credentials');                
+                messagingService.sendErrorMessage('Invalid credentials.');
             }
-            
         };
         /* ************************** */
 

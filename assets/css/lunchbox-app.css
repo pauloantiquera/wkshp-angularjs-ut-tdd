@@ -1,3 +1,27 @@
 body {
 	padding-top: 50px;
 }
+
+#alert {
+	z-index: 10000;
+	position: fixed;
+	right: 15px;
+	top: 90px;
+	opacity: 0.9;
+	width: 300px;
+	overflow: hidden;
+}
+
+.alert {
+	/*display: none;*/
+	margin-bottom: 2px;
+	padding: 7px;
+	min-height: 55px;
+}
+
+.alert .close {
+}
+
+.alert .alertText {
+	max-width: 260px;
+}

@@ -15,11 +15,13 @@ describe('Login Controller Unit Tests Spec', function() {
 	var $locationMock = {
 		path: function() {}
 	};
+	var $messagingServiceMock = {};
 
 	beforeEach(function() {
 		module(function($provide) {
 			$provide.value('authService', $authServiceMock);
 			$provide.value('$location', $locationMock);
+			$provide.value('messagingService', $messagingServiceMock);
 		});
 
 		inject(function($controller) {
@@ -36,14 +38,18 @@ describe('Login Controller Unit Tests Spec', function() {
 	});
 
 	describe('doLogin feature', function() {
-		it('must throw an invalid credentials error if userName or password was not non valid or empty-string', function() {
+		it('must send a "Invalid credentials." error message through messagingService if userName or password was not non valid or empty-string', function() {
 			var invalidUserName = '',
-				invalidPassword = 1321232132;
+				invalidPassword = 1321232132,
+				errorMessage = 'Invalid credentials.';
 
+			$messagingServiceMock.sendErrorMessage = jasmine.createSpy('sendErrorMessage');
 			$loginController.userName = invalidUserName;
 			$loginController.password = invalidPassword;
 
-			expect($loginController.doLogin).toThrowError('Invalid credentials');
+			$loginController.doLogin();
+
+			expect($messagingServiceMock.sendErrorMessage).toHaveBeenCalledWith(errorMessage);
 		});
 
 		it('with a valid credential set (userName, password) and true return from authService.doAuth must redirect to /postauthredirection route', function() {
@@ -63,17 +69,21 @@ describe('Login Controller Unit Tests Spec', function() {
 			expect($locationMock.path).toHaveBeenCalledWith('/postauthredirection');
 		});
 
-		it('must throw a "Auth error: wrong userName or password" if authService.doAuth returns false', function() {
+		it('must send an "Wrong userName or password." error message through messagingService if authService.doAuth returns false', function() {
 			var validUserName = 'anyValidUserName',
 				validPassword = 'anyValidPassword',
-				expectedAuthServiceDoAuthValue = false;
+				expectedAuthServiceDoAuthValue = false,
+				errorMessage = 'Wrong userName or password.';
+
+			spyOn($authServiceMock, 'doAuth').and.returnValue(expectedAuthServiceDoAuthValue);
+			$messagingServiceMock.sendErrorMessage = jasmine.createSpy('sendErrorMessage');
 
 			$loginController.userName = validUserName;
 			$loginController.password = validPassword;
 
-			spyOn($authServiceMock, 'doAuth').and.returnValue(expectedAuthServiceDoAuthValue);
+			$loginController.doLogin();
 
-			expect($loginController.doLogin).toThrowError('Auth error: wrong userName or password');
+			expect($messagingServiceMock.sendErrorMessage).toHaveBeenCalledWith('Wrong userName or password.');
 		});
 	});
 });
