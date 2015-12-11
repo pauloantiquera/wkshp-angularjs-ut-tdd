@@ -3,9 +3,10 @@
 
     angular
         .module('Login')
-        .config(['$routeProvider', function($routeProvider) {
-        	$routeProvider
-        		.when('/login', {
+        .config(['$stateProvider', function($stateProvider) {
+        	$stateProvider
+        		.state('login', {
+                    url: '/login',
         			templateUrl: 'app/login/loginForm.html',
         			controller: 'loginController as loginCtrl'
         		});

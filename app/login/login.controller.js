@@ -8,11 +8,12 @@
     loginController.$inject = [
         'authService',
         '$location',
-        'messagingService'
+        'messagingService', 
+        'postAuthRedirectionRoute'
     ];
 
     /* @ngInject */
-    function loginController(authService, $location, messagingService) {
+    function loginController(authService, $location, messagingService, postAuthRedirectionRoute) {
         /* Private Attributes Declaration */
         var self = this;
         /* ****************************** */
@@ -29,7 +30,7 @@
         }
 
         function doPostAuthRedirection() {
-            $location.path('/postauthredirection');
+            $location.path(postAuthRedirectionRoute);
         }
         /* *************************** */
 

@@ -2,7 +2,7 @@
 
 describe('dayProductionController unit test Spec', function() {	
 	beforeEach(function() {
-		angular.module('ngRoute', []);
+		angular.module('ui.router', []);
 		module('DailyProduction');
 	});
 

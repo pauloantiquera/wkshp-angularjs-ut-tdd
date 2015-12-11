@@ -2,5 +2,5 @@
     'use strict';
 
     angular
-        .module('Login', ['Auth','ngRoute']);
+        .module('Login', ['Auth', 'ui.router']);
 })();

@@ -2,5 +2,5 @@
     'use strict';
 
     angular
-        .module('DailyProduction', ['ngRoute']);
+        .module('DailyProduction', ['ui.router']);
 })();

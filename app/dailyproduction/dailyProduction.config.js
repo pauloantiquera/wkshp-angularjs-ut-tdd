@@ -3,10 +3,12 @@
 
     angular
         .module('DailyProduction')
-        .config(['$routeProvider', function($routeProvider) {
-        	$routeProvider.when('/production', {
-        		templateUrl: 'app/dailyproduction/productionList.html'
-        	})
+        .config(['$stateProvider', function($stateProvider) {
+        	$stateProvider
+        		.state('production', {
+        			url: '/production',
+        			templateUrl: 'app/dailyproduction/productionList.html'
+        		})
         }])
         .constant('dailyProductionDefaultRoute', '/production');
 })();

@@ -4,7 +4,7 @@ describe('Login Controller Unit Tests Spec', function() {
 
 	beforeEach(function() {
 		angular.module('Auth', []);
-		angular.module('ngRoute', []);
+		angular.module('ui.router', []);
 		module('Login');
 	});
 
@@ -16,12 +16,14 @@ describe('Login Controller Unit Tests Spec', function() {
 		path: function() {}
 	};
 	var $messagingServiceMock = {};
+	var $postAuthRedirectionRouteMock = '/postauthredirection';
 
 	beforeEach(function() {
 		module(function($provide) {
 			$provide.value('authService', $authServiceMock);
 			$provide.value('$location', $locationMock);
 			$provide.value('messagingService', $messagingServiceMock);
+			$provide.value('postAuthRedirectionRoute', '/postauthredirection');
 		});
 
 		inject(function($controller) {
