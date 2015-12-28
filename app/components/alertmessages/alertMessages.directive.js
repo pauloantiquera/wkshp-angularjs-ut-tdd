@@ -5,10 +5,10 @@
         .module('lunchBoxApp.components')
         .directive('alertMessages', alertMessages);
 
-    alertMessages.$inject = ['messagingService'];
+    alertMessages.$inject = [];
 
     /* @ngInject */
-    function alertMessages(messagingService) {
+    function alertMessages() {
         // Usage: <alert-messages></alert-messages>
         //
         // Creates: <div class="alert-container">
@@ -20,7 +20,7 @@
 		// 					<div class="alertText"></div>
 		// 				</div>
 		// 			</div>
-        //
+
         var templateString = '\
         	<script>\
 				removeAlert = function(element) {\
@@ -46,6 +46,7 @@
 		';
 
         var directive = {
+            controller: 'alertMessagesController as alertCtrl',
             link: link,
             restrict: 'E',
             template: templateString,            
@@ -54,20 +55,16 @@
         };
         return directive;
 
-        function link(scope, element, attrs) {
-        	function showMessage(event, message) {
-        		var formattedMessage = '<strong>'+event.name+': </strong>'+message;
-        		element.append(alertHtmlCode);
+        function link(scope, element, attrs, alertCtrl) {
+            function showMessage(event, message) {
+                var formattedMessage = '<strong>'+event.name+': </strong>'+message;
+                element.append(alertHtmlCode);
 
-        		angular.element('.alertText').html(formattedMessage);
-        	}
-
-        	function messagingEventListener(event, message) {
-        		showMessage(event, message);
-        	};
+                angular.element('.alertText').html(formattedMessage);
+            }
 
         	function initDirective() {
-        		messagingService.registerAllEventsListener(messagingEventListener);
+        		alertCtrl.init(showMessage);
         	};
 
         	initDirective();

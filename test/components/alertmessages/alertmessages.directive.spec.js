@@ -38,11 +38,4 @@ describe('Alert Messages Directive Unit Test Suite', function() {
 
 		expect(element.html()).toContain(templateString);
 	});
-
-	it('must register a listener for all events provided by messagingService', function() {
-		var element = $compile('<alert-messages id="alert"></alert-messages>')($scope);
-		$scope.$digest();
-
-		expect($messagingServiceMock.registerAllEventsListener).toHaveBeenCalledWith(jasmine.any(Function));
-	});
 });
